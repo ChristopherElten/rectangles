@@ -4,6 +4,9 @@ import { RectangleHelper } from "./rectangleHelper.js";
 // testcases
 // ---
 console.log("Running tests...");
+console.log("------");
+console.assert(false, "Example of a failed test message...");
+console.assert(true, "Successful assertions will not log.");
 
 const rectangleHelper: RectangleHelper = new RectangleHelper();
 let r1: Rectangle, r2: Rectangle;
@@ -12,21 +15,39 @@ let r1: Rectangle, r2: Rectangle;
 // basecase - success
 r1 = new Rectangle({ x: 0, y: 0 }, {x: 2, y: 2});
 r2 = new Rectangle({ x: 0, y: 0 }, {x: 1, y: 1});
-console.assert(rectangleHelper.doesIntersect(r1, r2), "Fail")
+console.assert(rectangleHelper.doesIntersect(r1, r2), "Fail");
 // basecase - failure // left
 r1 = new Rectangle({ x: 0, y: 0 }, {x: 2, y: 2});
 r2 = new Rectangle({ x: 3, y: 0 }, {x: 4, y: 1});
-console.assert(!rectangleHelper.doesIntersect(r1, r2), "Fail")
+console.assert(!rectangleHelper.doesIntersect(r1, r2), "Fail");
 // basecase - failure // right
 r1 = new Rectangle({ x: 5, y: 0 }, {x: 6, y: 2});
 r2 = new Rectangle({ x: 0, y: 0 }, {x: 4, y: 1});
-console.assert(!rectangleHelper.doesIntersect(r1, r2), "Fail")
+console.assert(!rectangleHelper.doesIntersect(r1, r2), "Fail");
 // basecase - failure // ontop
+r1 = new Rectangle({ x: 5, y: 2 }, {x: 6, y: 3});
+r2 = new Rectangle({ x: 0, y: 0 }, {x: 6, y: 1});
+console.assert(!rectangleHelper.doesIntersect(r1, r2), "Fail");
 // basecase - failure // below
+r1 = new Rectangle({ x: 0, y: 0 }, {x: 6, y: 1});
+r2 = new Rectangle({ x: 5, y: 2 }, {x: 6, y: 3});
+console.assert(!rectangleHelper.doesIntersect(r1, r2), "Fail");
 // edgecase - single point of intersection
+r1 = new Rectangle({ x: 0, y: 0 }, {x: 6, y: 1});
+r2 = new Rectangle({ x: 6, y: 1 }, {x: 7, y: 3});
+console.assert(rectangleHelper.doesIntersect(r1, r2), "Fail");
 // edgecase - adjacent rectangles (large amount of intersections)
+r1 = new Rectangle({ x: 0, y: 0 }, {x: 3, y: 3});
+r2 = new Rectangle({ x: 3, y: 0 }, {x: 5, y: 3});
+console.assert(rectangleHelper.doesIntersect(r1, r2), "Fail");
 // edgecase - duplicate rectangles (large amount of intersections)
+r1 = new Rectangle({ x: 0, y: 0 }, {x: 3, y: 3});
+r2 = new Rectangle({ x: 0, y: 0 }, {x: 3, y: 3});
+console.assert(rectangleHelper.doesIntersect(r1, r2), "Fail");
 // edgecase - contained rectangle
+r1 = new Rectangle({ x: 0, y: 0 }, {x: 10, y: 10});
+r2 = new Rectangle({ x: 2, y: 2 }, {x: 3, y: 3});
+console.assert(!rectangleHelper.doesIntersect(r1, r2), "Fail");
 
 // get intersection points
 // --
