@@ -105,11 +105,29 @@ console.assert(res === null, "Fail");
 // containment
 // --
 // basecase - success
+r1 = new Rectangle({ x: 0, y: 0 }, { x: 10, y: 10 });
+r2 = new Rectangle({ x: 2, y: 2 }, { x: 3, y: 3 });
+console.assert(rectangleHelper.doesContain(r1, r2), "Fail");
 // basecase - failure (due to intersection)
+r1 = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
+r2 = new Rectangle({ x: 0, y: 0 }, { x: 1, y: 1 });
+console.assert(!rectangleHelper.doesContain(r1, r2), "Fail");
 // basecase - failure (due to sharing no points)
+r1 = new Rectangle({ x: 5, y: 2 }, { x: 6, y: 3 });
+r2 = new Rectangle({ x: 0, y: 0 }, { x: 6, y: 1 });
+console.assert(!rectangleHelper.doesContain(r1, r2), "Fail");
 // edgecase - single point of intersection
+r1 = new Rectangle({ x: 0, y: 0 }, { x: 6, y: 1 });
+r2 = new Rectangle({ x: 6, y: 1 }, { x: 7, y: 3 });
+console.assert(!rectangleHelper.doesContain(r1, r2), "Fail");
 // edgecase - adjacent rectangles (large amount of intersections)
+r1 = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 3 });
+r2 = new Rectangle({ x: 3, y: 0 }, { x: 5, y: 3 });
+console.assert(!rectangleHelper.doesContain(r1, r2), "Fail");
 // edgecase - duplicate rectangles (large amount of intersections)
+r1 = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 3 });
+r2 = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 3 });
+console.assert(!rectangleHelper.doesContain(r1, r2), "Fail");
 // adjacency
 // --
 // basecase - success // proper
