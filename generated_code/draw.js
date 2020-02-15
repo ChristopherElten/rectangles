@@ -1,7 +1,7 @@
 import { Rectangle } from "./rectangle";
 let rAxInputElement, rAyInputElement, rBxInputElement, rByInputElement;
 let r1, r2;
-let domInit = () => {
+function domInit() {
     r1 = new Rectangle({ x: 0, y: 0 }, { x: 100, y: 100 });
     r2 = new Rectangle({ x: 50, y: 50 }, { x: 150, y: 150 });
     rAxInputElement = document.getElementById('rAx');
@@ -24,7 +24,7 @@ let domInit = () => {
         r1.p2.y = e.target.valueAsNumber;
         draw(r1, r2);
     });
-};
+}
 function draw(r1, r2) {
     if (r1 === null || r1 === undefined)
         r1 = new Rectangle({ x: 0, y: 0 }, { x: 100, y: 100 });

@@ -3,7 +3,7 @@ import { Rectangle } from "./rectangle";
 let rAxInputElement, rAyInputElement, rBxInputElement, rByInputElement;
 let r1: Rectangle, r2: Rectangle;
 
-let domInit = (): void => {
+function domInit(): void {
     r1 = new Rectangle({ x: 0, y: 0}, { x: 100, y: 100} );
     r2 = new Rectangle({ x: 50, y: 50}, { x: 150, y: 150} );
 
