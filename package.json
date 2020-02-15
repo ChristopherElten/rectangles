@@ -4,8 +4,9 @@
   "description": "rectangles",
   "main": "",
   "scripts": {
-    "compile": "tsc rectangle.ts draw.ts rectangleHelper.ts  --outDir public --target es6",
-    "start-server": "http-server public"
+    "compile": "tsc rectangle.ts draw.ts rectangleHelper.ts test.ts  --outDir public --target es6",
+    "start-server": "http-server public",
+    "test": "node ./public/test.js"
   },
   "author": "Christopher Elten",
   "license": "ISC",

@@ -13,7 +13,7 @@ export class RectangleHelper {
             this.doesContain(r1, r2));
     }
     getIntersectionPoints(r1, r2) {
-        if (!this.doesIntersect)
+        if (!this.doesIntersect(r1, r2))
             return null;
         const r1Points = r1.getPointsFromRectangle();
         const r2Points = r2.getPointsFromRectangle();

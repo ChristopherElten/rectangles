@@ -46,7 +46,7 @@ let draw = (r1, r2) => {
         console.log("Do the rectangles intersect? ", rectangleHelper.doesIntersect(r1, r2));
         console.log("Are the rectangles adjacent? ", rectangleHelper.isAdjacent(r1, r2));
         console.log("Do one of the rectangles contain the other? ", rectangleHelper.doesContain(r1, r2));
-        console.log(rectangleHelper.getIntersectionPoints(r1, r2));
+        console.log("Intersection points: ", rectangleHelper.getIntersectionPoints(r1, r2));
     }
 };
 domInit();
