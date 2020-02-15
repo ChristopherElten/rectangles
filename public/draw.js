@@ -43,9 +43,9 @@ let draw = (r1, r2) => {
         ctx.fillRect(r1.p1.x, r1.p1.y, r1.p2.x - r1.p1.x, r1.p2.y - r1.p1.y);
         ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
         ctx.fillRect(r2.p1.x, r2.p1.y, r2.p2.x - r2.p1.x, r2.p2.y - r2.p1.y);
-        console.log(rectangleHelper.doesIntersect(r1, r2));
-        console.log(rectangleHelper.isAdjacent(r1, r2));
-        console.log(rectangleHelper.doesContain(r1, r2));
+        console.log("Do the rectangles intersect? ", rectangleHelper.doesIntersect(r1, r2));
+        console.log("Are the rectangles adjacent? ", rectangleHelper.isAdjacent(r1, r2));
+        console.log("Do one of the rectangles contain the other? ", rectangleHelper.doesContain(r1, r2));
     }
 };
 domInit();

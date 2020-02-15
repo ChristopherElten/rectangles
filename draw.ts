@@ -44,7 +44,6 @@ let draw = (r1?, r2?): void => {
         const ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-
         // fill rect api takes: x, y, w, h as params
         // we have two points, bottom left, and top right
         // therefore, the w and h can be calculated as the delta of x and y
@@ -53,9 +52,9 @@ let draw = (r1?, r2?): void => {
 
         ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
         ctx.fillRect(r2.p1.x, r2.p1.y, r2.p2.x - r2.p1.x, r2.p2.y - r2.p1.y);
-        console.log(rectangleHelper.doesIntersect(r1, r2));
-        console.log(rectangleHelper.isAdjacent(r1, r2));
-        console.log(rectangleHelper.doesContain(r1, r2));
+        console.log("Do the rectangles intersect? ", rectangleHelper.doesIntersect(r1, r2));
+        console.log("Are the rectangles adjacent? ", rectangleHelper.isAdjacent(r1, r2));
+        console.log("Do one of the rectangles contain the other? ", rectangleHelper.doesContain(r1, r2));
     }
 }
 
