@@ -1,9 +1,9 @@
-import { Rectangle } from "./rectangle";
+import { Rectangle } from "./rectangle.js";
 
 let rAxInputElement, rAyInputElement, rBxInputElement, rByInputElement;
 let r1: Rectangle, r2: Rectangle;
 
-function domInit(): void {
+let domInit = (): void => {
     r1 = new Rectangle({ x: 0, y: 0}, { x: 100, y: 100} );
     r2 = new Rectangle({ x: 50, y: 50}, { x: 150, y: 150} );
 
@@ -33,7 +33,7 @@ function domInit(): void {
 }
 
 
-function draw(r1, r2): void {
+let draw = (r1?, r2?): void => {
     if (r1 === null || r1 === undefined) r1 = new Rectangle({ x: 0, y: 0}, { x: 100, y: 100} );
     if (r2 === null || r2 === undefined) r2 = new Rectangle({ x: 50, y: 50}, { x: 150, y: 150} );
 
@@ -53,3 +53,6 @@ function draw(r1, r2): void {
         ctx.fillRect(r2.p1.x, r2.p1.y, r2.p2.x - r2.p1.x, r2.p2.y - r2.p1.y);
     }
 }
+
+domInit();
+draw();

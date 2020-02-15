@@ -1,0 +1,15 @@
+{
+  "name": "rectangles",
+  "version": "1.0.0",
+  "description": "rectangles",
+  "main": "",
+  "scripts": {
+    "compile": "tsc rectangle.ts draw.ts rectangleHelper.ts  --outDir public --target es6",
+    "start-server": "http-server public"
+  },
+  "author": "Christopher Elten",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.12.1"
+  }
+}

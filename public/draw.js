@@ -1,7 +1,7 @@
-import { Rectangle } from "./rectangle";
+import { Rectangle } from "./rectangle.js";
 let rAxInputElement, rAyInputElement, rBxInputElement, rByInputElement;
 let r1, r2;
-function domInit() {
+let domInit = () => {
     r1 = new Rectangle({ x: 0, y: 0 }, { x: 100, y: 100 });
     r2 = new Rectangle({ x: 50, y: 50 }, { x: 150, y: 150 });
     rAxInputElement = document.getElementById('rAx');
@@ -24,8 +24,8 @@ function domInit() {
         r1.p2.y = e.target.valueAsNumber;
         draw(r1, r2);
     });
-}
-function draw(r1, r2) {
+};
+let draw = (r1, r2) => {
     if (r1 === null || r1 === undefined)
         r1 = new Rectangle({ x: 0, y: 0 }, { x: 100, y: 100 });
     if (r2 === null || r2 === undefined)
@@ -42,4 +42,6 @@ function draw(r1, r2) {
         ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
         ctx.fillRect(r2.p1.x, r2.p1.y, r2.p2.x - r2.p1.x, r2.p2.y - r2.p1.y);
     }
-}
+};
+domInit();
+draw();
