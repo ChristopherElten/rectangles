@@ -1,4 +1,4 @@
-class RectangleHelper {
+export class RectangleHelper {
     doesIntersect(r1, r2) {
         // five cases of not intersecting...
         // 1. rect is to the right
@@ -12,6 +12,9 @@ class RectangleHelper {
             r1.p2.y < r2.p1.y || // bottom
             this.doesR2ContainR1(r1, r2) ||
             this.doesR2ContainR1(r2, r1));
+    }
+    doesContain(r1, r2) {
+        return this.doesR2ContainR1(r1, r2) || this.doesR2ContainR1(r2, r1);
     }
     doesR2ContainR1(r1, r2) {
         return r1.p1.x > r2.p1.x &&

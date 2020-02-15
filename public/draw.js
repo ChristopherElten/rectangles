@@ -1,6 +1,8 @@
 import { Rectangle } from "./rectangle.js";
+import { RectangleHelper } from "./rectangleHelper.js";
 let rAxInputElement, rAyInputElement, rBxInputElement, rByInputElement;
 let r1, r2;
+let rectangleHelper = new RectangleHelper();
 let domInit = () => {
     r1 = new Rectangle({ x: 0, y: 0 }, { x: 100, y: 100 });
     r2 = new Rectangle({ x: 50, y: 50 }, { x: 150, y: 150 });
@@ -41,6 +43,9 @@ let draw = (r1, r2) => {
         ctx.fillRect(r1.p1.x, r1.p1.y, r1.p2.x - r1.p1.x, r1.p2.y - r1.p1.y);
         ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
         ctx.fillRect(r2.p1.x, r2.p1.y, r2.p2.x - r2.p1.x, r2.p2.y - r2.p1.y);
+        console.log(rectangleHelper.doesIntersect(r1, r2));
+        console.log(rectangleHelper.isAdjacent(r1, r2));
+        console.log(rectangleHelper.doesContain(r1, r2));
     }
 };
 domInit();

@@ -1,6 +1,6 @@
 import { Rectangle, Point } from "./rectangle";
 
-class RectangleHelper {
+export class RectangleHelper {
     doesIntersect(r1: Rectangle, r2: Rectangle): boolean {
         // five cases of not intersecting...
         // 1. rect is to the right
@@ -17,7 +17,10 @@ class RectangleHelper {
             this.doesR2ContainR1(r2, r1)
         );
     }
-    
+
+    doesContain(r1: Rectangle, r2: Rectangle) {
+        return this.doesR2ContainR1(r1, r2) || this.doesR2ContainR1(r2, r1);
+    }
     
     private doesR2ContainR1(r1: Rectangle, r2: Rectangle): boolean {
         return r1.p1.x > r2.p1.x &&
