@@ -11,6 +11,7 @@
   "author": "Christopher Elten",
   "license": "ISC",
   "dependencies": {
-    "http-server": "^0.12.1"
+    "http-server": "^0.12.1",
+    "tsc": "^1.20150623.0"
   }
 }

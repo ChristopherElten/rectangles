@@ -1,4 +1,4 @@
-_This project requires node/npm_
+_This project requires node/npm and typescript_
 
 ## Setting up environment
 
