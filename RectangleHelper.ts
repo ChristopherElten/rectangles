@@ -13,9 +13,39 @@ export class RectangleHelper {
             r1.p1.x > r2.p2.x || // right
             r1.p1.y > r2.p2.y || // top
             r1.p2.y < r2.p1.y || // bottom
-            this.doesR2ContainR1(r1, r2) || 
-            this.doesR2ContainR1(r2, r1)
+            this.doesContain(r1, r2)
         );
+    }
+
+    getIntersectionPoints(r1: Rectangle, r2: Rectangle) {
+        if (!this.doesIntersect) return null;
+        
+        const r1Points = r1.getPointsFromRectangle();
+        const r2Points = r2.getPointsFromRectangle();
+        
+        // the maximum size of the array required is the max x and max y
+        const maxX = Math.max(r1.p2.x, r2.p2.x) + 1;
+        const maxY = Math.max(r1.p2.y, r2.p2.y) + 1;
+        const matrix = new Array(maxX).fill(0).map(el => new Array(maxY).fill(0));
+
+        for(let i = 0; i < r1Points.length; i++ ) {
+            const p = r1Points[i];
+            matrix[p.x][p.y] += 1;
+        }
+
+        for(let i = 0; i < r2Points.length; i++ ) {
+            const p = r2Points[i];
+            matrix[p.x][p.y] += 1;
+        }
+
+        // Loop through matrix and collect any values that have intersected twice
+        const res = [];
+        for(let i = 0; i < matrix.length; i++) {
+            for(let j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j] === 2) res.push( { x: i, y: j } );
+            }
+        }
+        return res;
     }
 
     doesContain(r1: Rectangle, r2: Rectangle) {
