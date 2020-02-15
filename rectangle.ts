@@ -3,7 +3,7 @@ interface Point {
     y: number;
 }
 
-class Rectangle {
+export class Rectangle {
     p1: Point; // bottom left
     p2: Point; // top right
 
