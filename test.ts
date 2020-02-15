@@ -3,10 +3,10 @@ import { RectangleHelper } from "./rectangleHelper.js";
 
 // testcases
 // ---
-console.log("Running tests...");
-console.log("------");
 console.assert(false, "Example of a failed test message...");
 console.assert(true, "Successful assertions will not log.");
+console.log("Running tests...");
+console.log("------");
 
 const rectangleHelper: RectangleHelper = new RectangleHelper();
 let r1: Rectangle, r2: Rectangle, res;
@@ -136,12 +136,38 @@ console.assert(!rectangleHelper.doesContain(r1, r2), "Fail");
 // adjacency
 // --
 // basecase - success // proper
+r1 = new Rectangle({ x: 0, y: 0 }, {x: 3, y: 3});
+r2 = new Rectangle({ x: 3, y: 0 }, {x: 5, y: 3});
+console.assert(rectangleHelper.isAdjacent(r1, r2), "Fail");
 // basecase - success // sub-line
+r1 = new Rectangle({ x: 0, y: 0 }, {x: 5, y: 10});
+r2 = new Rectangle({ x: 5, y: 1 }, {x: 6, y: 3});
+console.assert(rectangleHelper.isAdjacent(r1, r2), "Fail");
 // basecase - success // partial
-// basecase - success // multiple adjacent sides (1)
-// basecase - success // multiple adjacent sides (2)
+r1 = new Rectangle({ x: 0, y: 0 }, {x: 5, y: 5});
+r2 = new Rectangle({ x: 5, y: 1 }, {x: 10, y: 10});
+console.assert(rectangleHelper.isAdjacent(r1, r2), "Fail");
+// basecase - success // multiple adjacent sides (top - subline, right - subline)
+r1 = new Rectangle({ x: 0, y: 0 }, {x: 5, y: 5});
+r2 = new Rectangle({ x: 4, y: 1 }, {x: 5, y: 5});
+console.assert(rectangleHelper.isAdjacent(r1, r2), "Fail");
 // basecase - failure with intersection
+r1 = new Rectangle({ x: 0, y: 1 }, {x: 4, y: 4});
+r2 = new Rectangle({ x: 1, y: 0 }, {x: 3, y: 7});
+console.assert(!rectangleHelper.isAdjacent(r1, r2), "Fail");
 // basecase - failure without intersection or containment // left
+r1 = new Rectangle({ x: 0, y: 0 }, {x: 2, y: 2});
+r2 = new Rectangle({ x: 3, y: 0 }, {x: 4, y: 1});
+console.assert(!rectangleHelper.isAdjacent(r1, r2), "Fail");
 // basecase - failure with containment
+r1 = new Rectangle({ x: 0, y: 0 }, {x: 10, y: 10});
+r2 = new Rectangle({ x: 2, y: 2 }, {x: 3, y: 3});
+console.assert(!rectangleHelper.isAdjacent(r1, r2), "Fail");
 // edgecase - single point of intersection
+r1 = new Rectangle({ x: 0, y: 0 }, {x: 6, y: 1});
+r2 = new Rectangle({ x: 6, y: 1 }, {x: 7, y: 3});
+console.assert(rectangleHelper.isAdjacent(r1, r2), "Fail");
 // edgecase - duplicate rectangles (all adjacent sides)
+r1 = new Rectangle({ x: 0, y: 0 }, {x: 3, y: 3});
+r2 = new Rectangle({ x: 0, y: 0 }, {x: 3, y: 3});
+console.assert(rectangleHelper.isAdjacent(r1, r2), "Fail");
