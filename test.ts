@@ -1,13 +1,26 @@
-import { Rectangle } from "./rectangle";
+import { Rectangle } from "./rectangle.js";
+import { RectangleHelper } from "./rectangleHelper.js";
 
 // testcases
 // ---
+console.log("Running tests...");
 
+const rectangleHelper: RectangleHelper = new RectangleHelper();
+let r1: Rectangle, r2: Rectangle;
 // intersection
 // --
 // basecase - success
+r1 = new Rectangle({ x: 0, y: 0 }, {x: 2, y: 2});
+r2 = new Rectangle({ x: 0, y: 0 }, {x: 1, y: 1});
+console.assert(rectangleHelper.doesIntersect(r1, r2), "Fail")
 // basecase - failure // left
+r1 = new Rectangle({ x: 0, y: 0 }, {x: 2, y: 2});
+r2 = new Rectangle({ x: 3, y: 0 }, {x: 4, y: 1});
+console.assert(!rectangleHelper.doesIntersect(r1, r2), "Fail")
 // basecase - failure // right
+r1 = new Rectangle({ x: 5, y: 0 }, {x: 6, y: 2});
+r2 = new Rectangle({ x: 0, y: 0 }, {x: 4, y: 1});
+console.assert(!rectangleHelper.doesIntersect(r1, r2), "Fail")
 // basecase - failure // ontop
 // basecase - failure // below
 // edgecase - single point of intersection
